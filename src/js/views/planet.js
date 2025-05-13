@@ -13,7 +13,7 @@ export const Planet = (props) => {
     useEffect(() => {
         fetch(`https://www.swapi.tech/api/planets/${params.planets_id}`)
             .then((response) => response.json())
-            .then((data) => setPlanet(data.result.properties));
+            .then((data) => setPlanet(data.result));
     }, []);
 
     return (
@@ -23,16 +23,16 @@ export const Planet = (props) => {
                     <img src={rigoImage} className="img-fluid" alt="Star Wars Planet" />
                 </div>
                 <div className="col-md-8">
-                    <h1 className="display-4 fw-bold">{planet.name}</h1>
+                    <h1 className="display-4 fw-bold">{planet.properties?.name}</h1>
                     <p className="lead">{planet.description}</p>
                     <hr className="my-4" />
                     <div className="row text-danger">
-                        <div className="col-6">Name: {planet.name}</div>
-                        <div className="col-6">Climate: {planet.climate}</div>
-                        <div className="col-6">Terrain: {planet.terrain}</div>
-                        <div className="col-6">Population: {planet.population}</div>
-                        <div className="col-6">Diameter: {planet.diameter}</div>
-                        <div className="col-6">Gravity: {planet.gravity}</div>
+                        <div className="col-6">Name: {planet.properties?.name}</div>
+                        <div className="col-6">Climate: {planet.properties?.climate}</div>
+                        <div className="col-6">Terrain: {planet.properties?.terrain}</div>
+                        <div className="col-6">Population: {planet.properties?.population}</div>
+                        <div className="col-6">Diameter: {planet.properties?.diameter}</div>
+                        <div className="col-6">Gravity: {planet.properties?.gravity}</div>
                     </div>
                     <Link to="/" className="btn btn-primary mt-4">Back home</Link>
                 </div>
